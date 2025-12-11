@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YesShare! — böngésző</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">YesShare! <span class="tiny">beta</span></div>
+      <div class="addressbar">
+        <input id="searchInput" placeholder="Írj URL-t (pl. hello.yes) vagy keress..." />
+        <button id="goBtn">Mehet</button>
+      </div>
+      <div class="auth" id="authArea">
+        <button id="openLogin">Bejelentkezés / Regisztráció</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <div id="browserHeader" class="browserHeader">Megnyitott oldal: <span id="openUrl">—</span></div>
+        <div id="pageView" class="pageView">Semmi nincs megnyitva. Nyiss meg egy .yes URL-t vagy hozz létre egyet.</div>
+      </section>
+
+      <aside class="right">
+        <div class="profileCard" id="profileCard">
+          <div class="profileHeader">Profil</div>
+          <div id="profileContent">
+            <div>Email: <span id="profileEmail">—</span></div>
+            <div>Oldalak száma: <span id="profileCount">0</span></div>
+            <div class="linksList" id="profileLinks"></div>
+            <div style="margin-top:12px;">
+              <button id="createPageBtn">Weboldal csinálása</button>
+              <button id="logoutBtn" style="display:none;">Kijelentkezés</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="searchResults" id="searchResults"></div>
+      </aside>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+      <div class="modalInner">
+        <h3 id="authTitle">Bejelentkezés</h3>
+        <div id="authForms">
+          <div id="formLogin">
+            <label>Email</label><input id="loginEmail" type="email" placeholder="email"/>
+            <label>Jelszó</label><input id="loginPassword" type="password" placeholder="jelszó"/>
+            <div style="margin-top:8px;">
+              <button id="loginSubmit">Bejelentkezés</button>
+              <button id="toRegister">Regisztráció</button>
+            </div>
+          </div>
+          <div id="formRegister" style="display:none;">
+            <label>Email</label><input id="regEmail" type="email" placeholder="email"/>
+            <label>Jelszó (6+)</label><input id="regPassword" type="password" placeholder="jelszó"/>
+            <div style="margin-top:8px;">
+              <button id="regSubmit">Regisztráció</button>
+              <button id="toLogin">Vissza</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:8px;"><button id="closeAuth">Bezár</button></div>
+      </div>
+    </div>
+
+    <!-- Create Page Modal (two-step) -->
+    <div id="modal" class="modal hidden">
+      <div class="modalInner">
+        <h3>Weboldal létrehozása</h3>
+        <div id="step1">
+          <label>Válassz típust:</label>
+          <select id="pageType">
+            <option value="rich">1 — Word-szerű (rich text)</option>
+            <option value="html">2 — HTML (szerkeszthető)</option>
+          </select>
+
+          <label>Cím</label>
+          <input id="pageTitle" placeholder="Oldal címe" />
+
+          <div id="richEditor" class="editor">
+            <div contenteditable="true" id="richContent" class="richContent" placeholder="Írd ide mint egy Word-be..."></div>
+          </div>
+
+          <div id="htmlEditor" style="display:none;">
+            <textarea id="htmlContent" rows="10" placeholder="Írd ide a HTML kódot..."></textarea>
+          </div>
+
+          <div style="margin-top:12px;">
+            <button id="toStep2">Következő — Válassz URL-t</button>
+            <button id="cancelBtn">Mégse</button>
+          </div>
+          <div id="step1Msg" class="modalMsg"></div>
+        </div>
+
+        <div id="step2" style="display:none;">
+          <h4>Válaszd ki a .yes előtti részt (slug)</h4>
+          <label>URL (csak a slug, pl. hello — vége .yes lesz)</label>
+          <input id="pageSlug" placeholder="például hello" />
+          <div style="margin-top:8px;">
+            <button id="checkSlug">Ellenőriz</button>
+            <button id="publishBtn" disabled>Közzététel</button>
+            <button id="backToStep1">Vissza</button>
+          </div>
+          <div id="step2Msg" class="modalMsg"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">YesShare! — .yes domain demo</footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

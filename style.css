@@ -1,0 +1,23 @@
+*{box-sizing:border-box;font-family:Inter, Arial, sans-serif}
+body,html{height:100%;margin:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#0f172a;color:#fff}
+.brand{font-weight:700}
+.addressbar{flex:1;display:flex;gap:8px;margin:0 16px}
+.addressbar input{flex:1;padding:8px;border-radius:6px;border:1px solid #333}
+.addressbar button{padding:8px 12px;border-radius:6px;border:0;background:#2563eb;color:#fff}
+.main{display:flex;height:calc(100vh - 114px)}
+.left{flex:1;padding:12px;overflow:auto;background:#0b1220;color:#fff}
+.right{width:360px;padding:12px;background:#f3f4f6;overflow:auto}
+.pageView{min-height:300px;padding:12px;border-radius:8px;background:#fff;color:#000}
+.profileCard{background:#fff;padding:12px;border-radius:8px}
+.profileHeader{font-weight:700;margin-bottom:8px}
+button{cursor:pointer}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5)}
+.modal.hidden{display:none}
+.modalInner{background:#fff;padding:18px;border-radius:10px;width:760px;max-width:95%}
+.editor{border:1px solid #ddd;padding:8px;border-radius:6px;background:#fff}
+.richContent{min-height:160px;outline:none}
+.searchResults{margin-top:12px}
+.linksList a{display:block;color:#0b61ff;text-decoration:none;margin-top:6px}
+.footer{padding:8px 12px;text-align:center;background:#0b1220;color:#fff}
+.modalMsg{margin-top:8px;color:red}
